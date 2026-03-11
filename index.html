@@ -7,60 +7,36 @@
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-
     <header>
         <h1>☕ Cafetín Central UCV</h1>
     </header>
 
-    <main>
-        <section id="seccion-login">
-            <h2>Iniciar Sesión</h2>
-            <div class="formulario">
-                <input type="text" id="usuario" placeholder="Nombre de usuario">
-                <input type="password" id="clave" placeholder="Contraseña">
-                <button id="btn-entrar">Entrar</button>
-                <p id="mensaje-error" style="color: red; font-weight: bold;"></p>
-            </div>
-        </section>
+    <section id="seccion-login">
+        <h2>Iniciar Sesión</h2>
+        <input type="text" id="usuario" placeholder="Nombre de usuario">
+        <input type="password" id="clave" placeholder="Contraseña">
+        <button id="btn-entrar">Entrar</button>
+        <p id="mensaje-error" style="color: red;"></p>
+    </section>
 
-        <section id="seccion-catalogo" style="display: none;">
-            <h2>🍴 Menú de Hoy</h2>
-            <div id="contenedor-productos">
-                </div>
+    <section id="seccion-catalogo" style="display: none;">
+        <h2>🍴 Menú de Hoy</h2>
+        <div id="contenedor-productos"></div>
+        <hr>
+        <h3>🛒 Tu Carrito (<span id="cuenta-carrito">0</span>)</h3>
+        <ul id="lista-carrito"></ul>
+        <p>Total a Pagar: $<span id="monto-total">0.00</span></p>
+        <button id="btn-finalizar" onclick="finalizarPedido()" style="background: green; color: white;">Finalizar Pedido</button>
+        <button onclick="cerrarSesion()">Cerrar Sesión</button>
+    </section>
 
-            <hr>
-            
-            <div class="carrito-container">
-                <h3>🛒 Tu Carrito (<span id="cuenta-carrito">0</span>)</h3>
-                <ul id="lista-carrito"></ul>
-                <p><strong>Total a Pagar:</strong> $<span id="monto-total">0.00</span></p>
-                
-                <div class="botones-accion">
-                    <button onclick="finalizarCompra()" style="background-color: #4CAF50; color: white;">Finalizar Pedido</button>
-                    <button onclick="cancelarPedido()" style="background-color: #f44336; color: white;">Cancelar Pedido</button>
-                </div>
-            </div>
-
-            <hr>
-            <div class="fidelidad">
-                <h4>⭐ Mis Puntos</h4>
-                <p>Tienes <strong>150 puntos</strong> acumulados.</p>
-            </div>
-            
-            <button onclick="cerrarSesion()" class="btn-salir">Cerrar Sesión</button>
-        </section>
-
-        <section id="seccion-cajero" style="display: none;">
-            <h2>📊 Panel de Ventas (Cajero)</h2>
-            <div class="historial-container">
-                <h3>Ventas Procesadas</h3>
-                <ul id="lista-ventas" style="list-style: none; padding: 0;">
-                    </ul>
-            </div>
-            <br>
-            <button onclick="cerrarSesion()" class="btn-salir">Cerrar Sesión / Salir</button>
-        </section>
-    </main>
+    <section id="seccion-cajero" style="display: none;">
+        <h2>📊 Panel de Ventas (Cajero)</h2>
+        <ul id="lista-ventas-procesadas">
+            <li>No hay ventas hoy.</li>
+        </ul>
+        <button onclick="cerrarSesion()">Cerrar Sesión / Salir</button>
+    </section>
 
     <script src="logica.js"></script>
 </body>
