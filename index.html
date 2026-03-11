@@ -22,20 +22,27 @@
     <section id="seccion-catalogo" style="display: none;">
         <h2>🍴 Menú de Hoy</h2>
         <div id="contenedor-productos"></div>
+
         <hr>
         <h3>🛒 Tu Carrito (<span id="cuenta-carrito">0</span>)</h3>
         <ul id="lista-carrito"></ul>
-        <p>Total a Pagar: $<span id="monto-total">0.00</span></p>
-        <button id="btn-finalizar" onclick="finalizarPedido()" style="background: green; color: white;">Finalizar Pedido</button>
-        <button onclick="cerrarSesion()">Cerrar Sesión</button>
+        <p><strong>Total a Pagar:</strong> $<span id="monto-total">0.00</span></p>
+        
+        <button id="btn-finalizar" style="background-color: #28a745; color: white;">Finalizar Pedido</button>
+        <button id="btn-cerrar-cliente">Cerrar Sesión</button>
+
+        <hr>
+        <h4>⭐ Mis Puntos</h4>
+        <p>Tienes <span id="puntos-cliente">150</span> puntos acumulados.</p>
     </section>
 
     <section id="seccion-cajero" style="display: none;">
         <h2>📊 Panel de Ventas (Cajero)</h2>
+        <p>Ventas Procesadas:</p>
         <ul id="lista-ventas-procesadas">
             <li>No hay ventas hoy.</li>
         </ul>
-        <button onclick="cerrarSesion()">Cerrar Sesión / Salir</button>
+        <button id="btn-cerrar-cajero">Cerrar Sesión / Salir</button>
     </section>
 
     <script src="logica.js"></script>
