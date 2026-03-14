@@ -13,36 +13,72 @@
 
     <section id="seccion-login">
         <h2>Iniciar Sesión</h2>
-        <input type="text" id="usuario" placeholder="Nombre de usuario">
+        <input type="text" id="usuario" placeholder="Usuario">
         <input type="password" id="clave" placeholder="Contraseña">
-        <button id="btn-entrar">Entrar</button>
-        <p id="mensaje-error" style="color: red;"></p>
+        <button id="btn-entrar">Ingresar</button>
+        <p id="mensaje-error" class="error"></p>
     </section>
 
-    <section id="seccion-catalogo" style="display: none;">
-        <h2>🍴 Menú de Hoy</h2>
-        <div id="contenedor-productos"></div>
-
-        <hr>
-        <h3>🛒 Tu Carrito (<span id="cuenta-carrito">0</span>)</h3>
-        <ul id="lista-carrito"></ul>
-        <p><strong>Total a Pagar:</strong> $<span id="monto-total">0.00</span></p>
+    <section id="seccion-cliente" class="modulo" style="display: none;">
+        <h2>🍴 Menú para Clientes</h2>
         
-        <button id="btn-finalizar" style="background-color: #28a745; color: white;">Finalizar Pedido</button>
-        <button id="btn-cerrar-cliente">Cerrar Sesión</button>
+        <div class="panel-puntos">
+            <p>⭐ Tienes <strong id="puntos-cliente">150</strong> puntos de fidelidad</p>
+        </div>
 
-        <hr>
-        <h4>⭐ Mis Puntos</h4>
-        <p>Tienes <span id="puntos-cliente">150</span> puntos acumulados.</p>
+        <div id="cat-cliente" class="grid-productos"></div>
+        
+        <div class="panel">
+            <h3>🛒 Tu Carrito</h3>
+            <ul id="lista-carrito"></ul>
+            <p><strong>Total:</strong> $<span id="total-carrito">0.00</span></p>
+            <label>Método de Pago:</label>
+            <select id="pago-cliente">
+                <option value="Efectivo">Efectivo</option>
+                <option value="Pago Móvil">Pago Móvil</option>
+                <option value="Tarjeta">Tarjeta</option>
+            </select>
+            <button onclick="procesarCompra('cliente')" class="btn-exito">Finalizar Pedido</button>
+        </div>
+        <button onclick="cerrarSesion()" class="btn-salir">Cerrar Sesión</button>
     </section>
 
-    <section id="seccion-cajero" style="display: none;">
-        <h2>📊 Panel de Ventas (Cajero)</h2>
-        <p>Ventas Procesadas:</p>
-        <ul id="lista-ventas-procesadas">
-            <li>No hay ventas hoy.</li>
-        </ul>
-        <button id="btn-cerrar-cajero">Cerrar Sesión / Salir</button>
+    <section id="seccion-cajero" class="modulo" style="display: none;">
+        <h2>📊 Panel del Cajero</h2>
+        <div class="panel">
+            <h3>📝 Venta Presencial</h3>
+            <div id="cat-cajero" class="grid-productos"></div>
+            <ul id="lista-caja"></ul>
+            <p><strong>Total:</strong> $<span id="total-caja">0.00</span></p>
+            <label>Método de Pago:</label>
+            <select id="pago-cajero">
+                <option value="Efectivo">Efectivo</option>
+                <option value="Pago Móvil">Pago Móvil</option>
+                <option value="Tarjeta">Tarjeta</option>
+            </select>
+            <button onclick="procesarCompra('cajero')" class="btn-accion">Registrar Venta</button>
+        </div>
+
+        <div class="panel">
+            <h3>📋 Historial de Pedidos</h3>
+            <ul id="lista-ventas-totales"></ul>
+        </div>
+        <button onclick="cerrarSesion()" class="btn-salir">Salir</button>
+    </section>
+
+    <section id="seccion-admin" class="modulo" style="display: none;">
+        <h2>⚙️ Gestión de Productos</h2>
+        <div class="panel">
+            <h3>➕ Agregar al Menú</h3>
+            <input type="text" id="adm-nombre" placeholder="Nombre">
+            <input type="number" id="adm-precio" placeholder="Precio ($)">
+            <button onclick="agregarProductoAdmin()" class="btn-exito">Guardar Producto</button>
+        </div>
+        <div class="panel">
+            <h3>🗑️ Inventario Actual</h3>
+            <ul id="lista-inventario-admin"></ul>
+        </div>
+        <button onclick="cerrarSesion()" class="btn-salir">Cerrar Sesión</button>
     </section>
 
     <script src="logica.js"></script>
